@@ -7,6 +7,18 @@ $w.onReady(function () {
 	console.log("Hello world!");
 });
 
+
+$w("#input7").onCustomValidation( (value, reject) => {
+  if(!isValidDestination(value)) {
+    reject("Invalid Format");
+  }
+} );
+
+export function isValidDestination(destination) {
+    const destinationRegex = /^[a-zA-Z]+,\s*[a-zA-Z]+$/;
+    return destinationRegex.test(destination);
+}
+
 /**
  *	Adds an event handler that fires when a visitor submits a Wix Form and it is successfully received by the server.
  */
